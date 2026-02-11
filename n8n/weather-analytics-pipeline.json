@@ -82,11 +82,11 @@
           "parameters": [
             {
               "name": "apikey",
-              "value": "sb_publishable_NZAjbo2jVL_sddfU7oeVPg_tMyQyfqJ"
+              "value": ""
             },
             {
               "name": "Authorization",
-              "value": "sb_publishable_NZAjbo2jVL_sddfU7oeVPg_tMyQyfqJ"
+              "value": ""
             },
             {
               "name": "Content-Type",
@@ -124,7 +124,7 @@
             },
             {
               "name": "appid",
-              "value": "18045f7d3df38a315504fe64ac8d5b94"
+              "value": ""
             },
             {
               "name": "units",
@@ -140,7 +140,7 @@
         208,
         0
       ],
-      "id": "0606b8b3-b51a-4fa1-9c83-098e286ed8dc",
+      "id": "",
       "name": "Request Weather API"
     }
   ],
