@@ -1,0 +1,195 @@
+{
+  "name": "weather-analytics-pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c9bc4da8-20b3-4ef3-81aa-65cdbee51453",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "086bd1be-b44f-4862-aaf5-359aec8e6fe3",
+              "name": "city",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "2375f04c-8300-433a-83de-f29aaa78119f",
+              "name": "timestamp",
+              "value": "={{$now}}",
+              "type": "string"
+            },
+            {
+              "id": "4628c107-4a23-4a62-bc67-957c2e2560eb",
+              "name": "temperature",
+              "value": "={{ $json.main.temp }}",
+              "type": "number"
+            },
+            {
+              "id": "d15666c1-070c-42b6-8ac1-cf28f0b95e7a",
+              "name": "humidity",
+              "value": "={{ $json.main.humidity }}",
+              "type": "number"
+            },
+            {
+              "id": "1d9bed05-1c37-4a82-95ac-845be26bc064",
+              "name": "pressure",
+              "value": "={{ $json.main.pressure }}",
+              "type": "number"
+            },
+            {
+              "id": "5bf42839-9139-4c17-be18-0879cb508353",
+              "name": "wind_speed",
+              "value": "={{ $json.wind.speed }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        0
+      ],
+      "id": "f2a16258-4313-44f7-847d-16d0b930ebc4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://dikgnfpahgrjqpikcvwe.supabase.co/rest/v1/raw_weather_data",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "sb_publishable_NZAjbo2jVL_sddfU7oeVPg_tMyQyfqJ"
+            },
+            {
+              "name": "Authorization",
+              "value": "sb_publishable_NZAjbo2jVL_sddfU7oeVPg_tMyQyfqJ"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"city\": \"{{$json.city}}\",\n  \"timestamp\": \"{{$json.timestamp}}\",\n  \"temperature\": {{$json.temperature}},\n  \"humidity\": {{$json.humidity}},\n  \"pressure\": {{$json.pressure}},\n  \"wind_speed\": {{$json.wind_speed}}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        624,
+        0
+      ],
+      "id": "875fd0c5-9071-4ca6-8960-cd7d338b5d06",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "url": "https://api.openweathermap.org/data/2.5/weather",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "Tucson"
+            },
+            {
+              "name": "appid",
+              "value": "18045f7d3df38a315504fe64ac8d5b94"
+            },
+            {
+              "name": "units",
+              "value": "imperial"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "0606b8b3-b51a-4fa1-9c83-098e286ed8dc",
+      "name": "Request Weather API"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Request Weather API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Weather API": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "ce270d87-7b98-4e45-86f7-26a9ceb3ecf6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "56570b6cf7ddabc142a510497a738bc65c3f409af7af763a83b99d715f44cada"
+  },
+  "id": "HHZbbcvDrwZ8YaPrS56Ct",
+  "tags": []
+}
