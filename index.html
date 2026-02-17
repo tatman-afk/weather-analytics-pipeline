@@ -3,94 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Pipeline Web App</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <meta http-equiv="refresh" content="0; url=./web/" />
+    <title>Weather Analytics Pipeline</title>
   </head>
   <body>
-    <main class="shell">
-      <section class="hero">
-        <p class="kicker">Live weather stream</p>
-        <h1>Weather Pipeline Web App</h1>
-        <p class="sub">
-          Supabase-backed weather telemetry, updated hourly via n8n + OpenWeather.
-        </p>
-      </section>
-
-      <section class="controls">
-        <label>
-          City
-          <input id="cityInput" type="text" value="Tucson" />
-        </label>
-        <label>
-          Schema
-          <input id="schemaInput" type="text" value="public" />
-        </label>
-        <label>
-          Table
-          <input id="tableInput" type="text" value="weather_data" />
-        </label>
-        <label>
-          Range
-          <select id="rangeSelect">
-            <option value="24h">24 hours</option>
-            <option value="7d" selected>7 days</option>
-            <option value="30d">30 days</option>
-          </select>
-        </label>
-        <button id="refreshBtn" type="button">Refresh Now</button>
-      </section>
-
-      <section class="status-row">
-        <p id="statusText">Loading data...</p>
-        <p id="lastUpdatedText">Last updated: --</p>
-      </section>
-
-      <section class="kpis" id="kpiGrid">
-        <article class="kpi">
-          <h2>Temperature</h2>
-          <p id="kpiTemp">--</p>
-        </article>
-        <article class="kpi">
-          <h2>Humidity</h2>
-          <p id="kpiHumidity">--</p>
-        </article>
-        <article class="kpi">
-          <h2>Pressure</h2>
-          <p id="kpiPressure">--</p>
-        </article>
-        <article class="kpi">
-          <h2>Wind Speed</h2>
-          <p id="kpiWind">--</p>
-        </article>
-      </section>
-
-      <section class="chart-grid">
-        <article class="chart-card">
-          <h2>Temperature Trend</h2>
-          <canvas id="temperatureChart"></canvas>
-        </article>
-        <article class="chart-card">
-          <h2>Humidity + Wind</h2>
-          <canvas id="humidityWindChart"></canvas>
-        </article>
-        <article class="chart-card">
-          <h2>Pressure Trend</h2>
-          <canvas id="pressureChart"></canvas>
-        </article>
-        <article class="chart-card">
-          <h2>Daily Min / Max Temperature</h2>
-          <canvas id="dailyRangeChart"></canvas>
-        </article>
-      </section>
-    </main>
-
-    <script type="module" src="./main.js"></script>
+    <p>Redirecting to the web app...</p>
   </body>
 </html>

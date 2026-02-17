@@ -4,9 +4,9 @@ Simple no-build web app that reads weather rows from Supabase and renders live c
 
 ## Files
 
-- `index.html` UI layout
-- `styles.css` visual theme
-- `main.js` Supabase query + chart logic
+- `web/index.html` UI layout
+- `web/styles.css` visual theme
+- `web/main.js` Supabase query + chart logic
 
 ## Run
 
@@ -19,6 +19,8 @@ python3 -m http.server 8080
 Then open:
 
 `http://localhost:8080`
+
+The root page redirects to the dashboard in `web/`.
 
 ## Supabase assumptions
 
